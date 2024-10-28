@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  margin: 0;
+}
+
+[data-theme="dark"] {
+  --background-color: rgb(75 85 99);
+}
+body {
+  background-color: var(--background-color);
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.header__container,
+.login__container {
+  padding: 20px 10% 0;
+  border-bottom: 1px solid gray;
+}
+
+.login__container {
+  border: none;
+}
