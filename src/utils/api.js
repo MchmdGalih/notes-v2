@@ -65,6 +65,45 @@ const getUserLogged = async () => {
 
   return { error: false, data: responseJson.data };
 };
+
+const addNote = async ({ title, body }) => {
+  const response = await fetchWithToken(`${BASE_URL}/notes`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title, body }),
+  });
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    alert(responseJson.message);
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const getActiveNotes = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/notes`);
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const showFormattedDate = (date) => {
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  return new Date(date).toLocaleDateString("id-ID", options);
+};
 export {
   getAccessToken,
   putAccessToken,
@@ -72,4 +111,7 @@ export {
   login,
   register,
   getUserLogged,
+  addNote,
+  showFormattedDate,
+  getActiveNotes,
 };

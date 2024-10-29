@@ -4,14 +4,23 @@
 
 :root {
   margin: 0;
+  color: var(--text-color);
 }
 
 [data-theme="dark"] {
   --background-color: rgb(75 85 99);
+  --text-color: rgb(255 255 255);
 }
+
 body {
   background-color: var(--background-color);
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: var(--text-color);
+}
+
+input {
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 .header__container,
