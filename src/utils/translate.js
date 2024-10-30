@@ -12,6 +12,8 @@ const translations = {
     search_archive: "Search Archives Notes",
     empty: "Empty Notes",
     not_found_text: "Go To Homepage",
+    title: "Note List",
+    add_title: "Add Note",
   },
   id: {
     personal_notes: "Catatan Pribadi",
@@ -26,6 +28,8 @@ const translations = {
     search_archive: "Mencari Arsip Catatan",
     empty: "Tidak ada catatan",
     not_found_text: "Kembali ke Halaman Utama",
+    title: "Daftar Catatan",
+    add_title: "Tambahakan Catatan",
   },
 };
 

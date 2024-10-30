@@ -63,7 +63,7 @@ export default function LoginInput({ onLogin }) {
       </div>
       <button
         type="submit"
-        className="rounded-md border-2 px-2 py-1 bg-blue-400 text-white  "
+        className="rounded-md border-2 px-2 py-1 bg-blue-400 text-white "
       >
         {translations[translate].submit}
       </button>

@@ -4,7 +4,7 @@ import CardItem from "./CardItem";
 export default function Card({ notes }) {
   return (
     <section className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mt-2">
-      <Link to="/notes/new" className="min-h-48 w-full">
+      <Link to="/notes/add" className="min-h-48 w-full">
         <article
           className={`border bg-inherit
             } p-3 shadow-md hover:scale-105 transition-all cursor-pointer h-full  flex items-center justify-center`}

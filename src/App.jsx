@@ -11,6 +11,7 @@ import {
 import "./styles/style.css";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
+import AddNotes from "./pages/Notes/AddNotes";
 function App() {
   const [translate, setTranslate] = useState(
     localStorage.getItem("translate") || "en"
@@ -80,6 +81,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
+                <Route path="/notes/add" element={<AddNotes />} />
               </Routes>
             </main>
           </ThemeContext.Provider>
