@@ -43,6 +43,7 @@ export default function LoginInput({ onLogin }) {
         placeholder="Email"
         onChange={handleEmailChange}
         className="rounded-md border-2 px-2 py-1  "
+        required
       />
       <div className="relative">
         <input
@@ -51,6 +52,7 @@ export default function LoginInput({ onLogin }) {
           type={passwordVisible ? "text" : "password"}
           placeholder={translate === "en" ? "Password" : "Kata Sandi"}
           className="rounded-md border-2 px-2 py-1 w-full "
+          required
         />
 
         <button

@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 
 import CardItem from "./CardItem";
+import { useContext } from "react";
+import { AuthorizAtionContext } from "../context/LocaleContext";
 export default function Card({ notes }) {
+  const { auth } = useContext(AuthorizAtionContext);
   return (
     <section className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mt-2">
-      <Link to="/notes/add" className="min-h-48 w-full">
+      <Link
+        to="/notes/add"
+        className={` ${
+          !auth ? "pointer-events-none opacity-50" : ""
+        } min-h-48 w-full`}
+      >
         <article
           className={`border bg-inherit
             } p-3 shadow-md hover:scale-105 transition-all cursor-pointer h-full  flex items-center justify-center`}

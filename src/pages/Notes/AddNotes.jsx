@@ -5,6 +5,7 @@ import { addNote } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 
 export default function AddNotes() {
+  const { translate } = useContext(TranslateContext);
   const [formData, setFormData] = useState({
     title: "",
     body: "",
@@ -24,7 +25,6 @@ export default function AddNotes() {
       throw new Error(`Error, ${err}`);
     }
   };
-  const { translate } = useContext(TranslateContext);
   return (
     <div className="home__container">
       <main className="mt-4 max-w-[800px] w-full mx-auto">

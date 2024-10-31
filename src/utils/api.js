@@ -95,6 +95,16 @@ const getActiveNotes = async () => {
   return { error: false, data: responseJson.data };
 };
 
+const getNoteId = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/notes/${id}`);
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
 const showFormattedDate = (date) => {
   const options = {
     weekday: "long",
@@ -114,4 +124,5 @@ export {
   addNote,
   showFormattedDate,
   getActiveNotes,
+  getNoteId,
 };

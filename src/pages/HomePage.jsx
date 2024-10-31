@@ -9,13 +9,15 @@ import translations from "../utils/translate";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
 import { useSearchParams } from "react-router-dom";
+import dummyData from "../utils/dummy";
+import SkeletonCard from "../components/SkeletonCard";
 
 export default function HomePage() {
   const { auth } = useContext(AuthorizAtionContext);
   const { translate } = useContext(TranslateContext);
   const title = translations[translate].search_note;
   const [notes, setNotes] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const [searchParams] = useSearchParams();
   const params = searchParams.get("keyword") || "";
 
@@ -25,14 +27,8 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!auth) {
-      setNotes([
-        {
-          id: +new Date(),
-          title: "DUMMY DATA",
-          body: "DUMMY DATA",
-          createdAt: new Date().toISOString(),
-        },
-      ]);
+      setNotes(dummyData);
+      setTimeout(() => setLoading(false), 2000);
       return;
     }
 
@@ -42,6 +38,8 @@ export default function HomePage() {
         setNotes(data);
       } catch (err) {
         console.log("error", err);
+      } finally {
+        setTimeout(() => setLoading(false), 2000);
       }
     };
     getHandleNotes();
@@ -52,7 +50,15 @@ export default function HomePage() {
       <main className="p-4">
         <SearchBar placeholder={title} />
 
-        <Card notes={searchNote} />
+        {loading ? (
+          <section className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 mt-2">
+            {(auth ? notes : dummyData).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))}
+          </section>
+        ) : (
+          <Card notes={searchNote} />
+        )}
       </main>
     </div>
   );

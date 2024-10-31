@@ -10,21 +10,16 @@ export default function RegisterInput({ onRegister }) {
   const [name, hanldeNameChange] = useInput("");
   const [email, handleEmailChange] = useInput("");
   const [password, handlePasswordChange] = useInput("");
+  const [confirmPassword, handleConfirmPassword] = useInput("");
   const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const addUser = {
-      name: name,
-      email: email,
-      password: password,
-    };
-    await onRegister(addUser);
-
-    hanldeNameChange("");
-    handleEmailChange("");
-    handlePasswordChange("");
+    if (password === confirmPassword) {
+      await onRegister({ name, email, password });
+    } else {
+      alert("Password dan Konfirmasi Password Tidak Sama");
+    }
   };
 
   const togglePasswordVisible = () => {
@@ -46,6 +41,7 @@ export default function RegisterInput({ onRegister }) {
           placeholder={translate === "en" ? "Name" : "Nama Pengguna"}
           onChange={hanldeNameChange}
           className="rounded-md border-2 px-2 py-1 w-full  "
+          required
         />
       </div>
 
@@ -56,6 +52,7 @@ export default function RegisterInput({ onRegister }) {
           placeholder="Email"
           onChange={handleEmailChange}
           className="rounded-md border-2 px-2 py-1  w-full "
+          required
         />
       </div>
 
@@ -66,6 +63,7 @@ export default function RegisterInput({ onRegister }) {
           type={passwordVisible ? "text" : "password"}
           placeholder={translate === "en" ? "Password" : "Kata Sandi"}
           className="rounded-md border-2 px-2 py-1 w-full "
+          required
         />
 
         <button
@@ -77,6 +75,29 @@ export default function RegisterInput({ onRegister }) {
         </button>
       </div>
 
+      <div className="relative">
+        <input
+          value={confirmPassword}
+          onChange={handleConfirmPassword}
+          type={passwordVisible ? "text" : "password"}
+          placeholder={
+            translate === "en" ? "Confirm Password" : "Konfirmasi Kata Sandi"
+          }
+          className="rounded-md border-2 px-2 py-1 w-full "
+          required
+        />
+
+        <button
+          type="button"
+          onClick={togglePasswordVisible}
+          className="absolute right-2 top-1/2 transform -translate-y-1/2"
+        >
+          {passwordVisible ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+        </button>
+      </div>
+      {password !== confirmPassword && (
+        <p className="text-red-500">Password Tidak Sama</p>
+      )}
       <button
         type="submit"
         className="rounded-md border-2 px-2 py-1 bg-blue-400 text-white  "
