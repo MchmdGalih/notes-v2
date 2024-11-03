@@ -8,9 +8,10 @@ import {
 import translations from "../utils/translate";
 import Card from "../components/Card";
 import SearchBar from "../components/SearchBar";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import dummyData from "../utils/dummy";
 import SkeletonCard from "../components/SkeletonCard";
+import { FaArchive } from "react-icons/fa";
 
 export default function HomePage() {
   const { auth } = useContext(AuthorizAtionContext);
@@ -58,6 +59,11 @@ export default function HomePage() {
           </section>
         ) : (
           <Card notes={searchNote} />
+        )}
+        {auth && (
+          <Link to="/archived" className="fixed bottom-10 right-10">
+            <FaArchive className="text-2xl" />
+          </Link>
         )}
       </main>
     </div>

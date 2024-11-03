@@ -105,6 +105,59 @@ const getNoteId = async (id) => {
 
   return { error: false, data: responseJson.data };
 };
+
+const getArchivedNotes = async () => {
+  const response = await fetchWithToken(`${BASE_URL}/notes/archived`);
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const archivedNote = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/notes/${id}/archive`, {
+    method: "POST",
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const unarchiveNote = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/notes/${id}/unarchive`, {
+    method: "POST",
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
+
+const deleteNote = async (id) => {
+  const response = await fetchWithToken(`${BASE_URL}/notes/${id}`, {
+    method: "DELETE",
+  });
+
+  const responseJson = await response.json();
+
+  if (responseJson.status !== "success") {
+    return { error: true, data: null };
+  }
+
+  return { error: false, data: responseJson.data };
+};
 const showFormattedDate = (date) => {
   const options = {
     weekday: "long",
@@ -125,4 +178,8 @@ export {
   showFormattedDate,
   getActiveNotes,
   getNoteId,
+  getArchivedNotes,
+  archivedNote,
+  unarchiveNote,
+  deleteNote,
 };

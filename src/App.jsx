@@ -13,6 +13,8 @@ import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage";
 import AddNotes from "./pages/Notes/AddNotes";
 import DetailPage from "./pages/Notes/DetailPage";
+import NoteFoundPage from "./pages/NotFound";
+import ArchivePage from "./pages/Notes/ArchivePage";
 function App() {
   const [translate, setTranslate] = useState(
     localStorage.getItem("translate") || "en"
@@ -84,6 +86,8 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/notes/add" element={<AddNotes />} />
                 <Route path="/notes/:id" element={<DetailPage />} />
+                <Route path="/archived" element={<ArchivePage />} />
+                <Route path="*" element={<NoteFoundPage />} />
               </Routes>
             </main>
           </ThemeContext.Provider>

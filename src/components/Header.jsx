@@ -55,7 +55,7 @@ export default function Header() {
               className="p-2 hover:bg-slate-200 rounded-md"
               onClick={toggleTranslate}
             >
-              {translate === "en" ? "English" : "Indonesia"}
+              {translate === "en" ? "Indonesia" : "English"}
             </p>
             {auth === null ? (
               <Link className="p-2 hover:bg-slate-200 rounded-md" to="/login">
@@ -94,7 +94,7 @@ export default function Header() {
               onClick={toggleTranslate}
               className="p-2 hover:bg-slate-200 rounded-md mt-2 "
             >
-              {translate === "en" ? "English" : "Indonesia"}
+              {translate === "en" ? "Indonesia" : "English"}
             </p>
             {auth === null ? (
               <Link

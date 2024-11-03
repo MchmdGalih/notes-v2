@@ -3,6 +3,7 @@ import { TranslateContext } from "../../context/LocaleContext";
 import translations from "../../utils/translate";
 import { addNote } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 
 export default function AddNotes() {
   const { translate } = useContext(TranslateContext);
@@ -54,7 +55,7 @@ export default function AddNotes() {
             type="submit"
             className="absolute right-4 bottom-6 border-2 rounded-full  p-2  "
           >
-            Kirim
+            <FaPlus />
           </button>
         </form>
       </main>
